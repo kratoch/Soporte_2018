@@ -3,7 +3,7 @@ Hacer un programa Python para acceder a la tabla Personas y PersonaPeso y
 buscar el registro de una persona identificada por su DNI, mostrar los datos de la
 persona y de su historial de peso.'''
 import pymysql
-import datetime
+
 
 conn = pymysql.connect(
     host="127.0.0.1", port=3307, user="root",
