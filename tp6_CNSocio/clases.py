@@ -24,3 +24,34 @@ class CNSocio():
         else:
             print('carga')
             self.cdsocio.altaSocio(self.s, self.socio)
+
+    def borrarSocio(self,session):
+        self.s = session
+        self.cdsocio = CDSocio()
+        self.cdsocio.muestraSocio(self.s)
+        self.cdsocio.borrar(self.s)
+
+    def modificarSocio(self,session):
+        self.s = session
+        self.cdsocio=CDSocio()
+        self.cdsocio.muestraSocio(self.s)
+        self.id = int(input('ingrese id del socio a modificar: '))
+        if self.cdsocio.buscar(self.s, self.id) == False:
+            print("error! Usuario inexistente! ")
+        else:
+            self.dni = int(input('ingrese dni: ') or '0')
+            while self.dni == 0:
+                self.dni = int(input('ingrese dni (obligatorio): ') or '0')
+            self.nombre = input('nombre: ')
+            while len(self.nombre) < 3 or len(self.nombre) > 15:
+                self.nombre = input('error, ingrese el nombre nuevamente (debe contener mas de 3 caracteres y menos '
+                                    'de 15): ')
+            self.apellido = input('apellido: ')
+            while len(self.apellido) < 3 or len(self.apellido) > 15:
+                self.apellido = input('error, ingrese el nombre nuevamente (debe contener mas de 3 caracteres y menos '
+                                      'de 15): ')
+            self.cdsocio.modificar(self.s,
+                                   Socio(idSoc= self.id, nombre= self.nombre, apellido= self.apellido, dni= self.dni))
+            print('Se ha modificado con exito')
+
+

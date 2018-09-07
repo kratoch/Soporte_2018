@@ -15,21 +15,23 @@ class CDSocio:
         for i in self.socios:
             print('id: ' + str(i.idSoc) + ' ' + i.nombre + ' ' + i.apellido + ' DNI: ' + str(i.dni))
 
-    def buscar(self,session):
+    def buscar(self, session, id):
         self.s = session
-        self.id = int(input('ingrese id de la persona a buscar'))
-        self.socios = self.s.query(Socio).filter(Socio.idSoc==self.id).all()
+        self.id = id
+        self.socios = self.s.query(Socio).filter(Socio.idSoc == self.id).first()
         if self.socios:
             print(self.socios.nombre + ' ' + self.socios.apellido)
+            return True
         else:
-            print('Usuario inexistente')
+            return False
+
 
     def modificar(self, session, socio):
         self.s=session
         self.socio = socio
         self.socios = self.s.query(Socio).filter(Socio.idSoc==self.socio.idSoc).all()
-        self.s.query(Socio).filter(Socio.idSoc==self.socio.idSoc).delete()
         if self.socios:
+            self.s.query(Socio).filter(Socio.idSoc == self.socio.idSoc).delete()
             self.s.add(self.socio)
             self.s.commit()
             return True
@@ -46,6 +48,7 @@ class CDSocio:
             return True
         else:
             return False
+
     def buscarDNI(self,session,dni):
         self.s = session
         self.dni = dni

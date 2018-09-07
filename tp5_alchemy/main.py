@@ -27,8 +27,4 @@ cdsocio=CDSocio()
 #print(cdsocio.buscarDNI(session, dni = int(input('ingrese dni: '))))
 
 
-
-cnsocio= CNSocio()
-cnsocio.altaSocio(session)
-
 cdsocio.muestraSocio(session)
