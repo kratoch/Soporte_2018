@@ -50,27 +50,9 @@ class CDSocio:
         self.s = session
         self.dni = dni
         self.cant = self.s.query(Socio).filter(Socio.dni==self.dni).count()
-        print(self.cant)
+        return self.cant
 
-class CNSocio():
 
-    def altaSocio(self, session):
-        self.s = session
-        self.socio = Socio()
-        self.cdsocio= CDSocio()
-        self.socio.idSoc = int(input('ingrese id: '))
-        self.dni = int(input('ingrese dni: '))
-        self.socio.nombre = input('ingrese nombre: ')
-        self.socio.apellido = input('ingrese apellido: ')
-        self.socios = self.s.query(Socio).filter(Socio.dni == self.dni).first()
-        if self.socios:
-            print('ya existe un socio con ese nro de documento')
-        else:
-            if not self.dni:
-                print('carga')
-                #self.cdsocio.altaSocio(self.s, self.socio)
-            else:
-                print('el socio debe tener dni')
 
 
 

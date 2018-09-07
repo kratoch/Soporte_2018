@@ -7,7 +7,7 @@ Base = declarative_base() #--- clase padre para definir las tablas
 
 class Socio(Base):
  __tablename__ = 'socio'  #--- indispensable.
- idSoc = Column(Integer, primary_key=True)
+ idSoc = Column(Integer, primary_key=True, autoincrement=True)
  nombre = Column(String(30))
  apellido = Column(String(20))
  dni = Column(Integer)
