@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 
 #Defino las funciones
 def alta():
@@ -12,21 +13,28 @@ def modificacion():
 #creo el objeto ventana principal
 ventana = Tk()
 ventana.title("ABM Socio")
-ventana.geometry("640x340")
+ventana.geometry("830x310")
+#creo un marco para que contenga alta baja y modificacion (de esta forma puedo ordenar su geometria en conjunto y separado del treeview)
+marco = Frame(ventana,relief=FLAT)
+#creo el treview
+treeview = ttk.Treeview(ventana,column=("nomb","apell","DNI"))
+#treeview
+treeview.heading("#0", text="Id")
+treeview.heading("nomb", text="Nombre")
+treeview.heading("apell", text="Apellido")
+treeview.heading("DNI", text="DNI")
 
-top = Toplevel()
-#creo un marco
-#marco = Frame(ventana,relief="sunken")
 
 #creo los controles
-etiqueta= Label(top,text="SOCIOS").pack
-botonAlta=Button(ventana,text="Alta",command=alta())
-botonBaja=Button(ventana,text="Baja",command=baja())
-botonModif=Button(ventana,text="Modificacion",command=modificacion())
+botonAlta=Button(marco,text="Alta",command=alta())
+botonBaja=Button(marco,text="Baja",command=baja())
+botonModif=Button(marco,text="Modificacion",command=modificacion())
 
 #agrego la geometria a los controles
-"""botonAlta.pack()
-botonBaja.pack()
-botonModif.pack()"""
+treeview.grid(padx=15,pady=10)
+marco.grid(padx=15,sticky=W,)
+botonAlta.grid(column=0,row=0)
+botonBaja.grid(column=1,row=0)
+botonModif.grid(column=2,row=0)
 #creo el lazo infinito de la ventana principal
 ventana.mainloop()
