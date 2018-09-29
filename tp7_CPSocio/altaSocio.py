@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk, font
+
 #programa principal
 
 #creo el objeto ventana principal
