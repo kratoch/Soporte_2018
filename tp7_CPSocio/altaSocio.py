@@ -9,7 +9,7 @@ ventana.title("Alta")
 ventana.geometry("200x130")
 fuente = font.Font(weight='bold')
 #creo los controles
-
+idEtiqueta = Label(ventana,text="Id")
 nombreEtiqueta = Label(ventana,text="Nombre")
 apellidoEtiqueta = Label(ventana,text="Apellido")
 dniEtiqueta = Label(ventana,text="DNI")
@@ -29,7 +29,7 @@ dniEntry = Entry(ventana,textvariable=dniVar)
 
 aceptarBoton = Button(ventana,text="Aceptar")
 cancelarBoton = Button(ventana,text="Cancelar")
-
+#Le doy geometria a los controles
 idEtiqueta.grid(column=0, row=0)
 nombreEtiqueta.grid(column=0,row=1)
 apellidoEtiqueta.grid(column=0,row=2)
@@ -42,3 +42,4 @@ nombreEntry.grid(column=1,row=1)
 apellidoEntry.grid(column=1,row=2)
 dniEntry.grid(column=1,row=3)
 ventana.mainloop()
+
